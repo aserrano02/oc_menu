@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Blank app description" />
+    <meta name="theme-color" content="#000000" />
+    <title>oc_menu</title>
+    <link rel="icon" href="images/favicon.svg" />
+    <link rel="stylesheet" href="/src/css/main.css" />
+  </head>
+  <body>
+    <app-index id="app-content"></app-index>
+
+    <noscript>Please enable JavaScript to view this website.</noscript>
+
+    <script type="module" src="src/components/app-index.ts"></script>
+    
+    <!-- Script de ejemplo para demostrar la comunicación con la aplicación contenedora -->
+    <script>
+      // Escuchar eventos del menú lateral
+      window.addEventListener('oc-menu-channel', (event) => {
+        console.log('🔔 Evento recibido del menú:', event.detail);
+        
+        // Ejemplo de cómo la aplicación contenedora puede manejar los eventos
+        switch (event.detail.type) {
+          case 'menu-ready':
+            console.log('✅ Menú está listo:', event.detail);
+            break;
+          case 'menu-item-selected':
+            console.log('🎯 Item seleccionado:', event.detail.menuId, event.detail.menuLabel);
+            // Aquí la aplicación contenedora puede navegar o realizar acciones
+            break;
+          case 'menu-collapsed':
+            console.log('📦 Menú colapsado');
+            break;
+          case 'menu-expanded':
+            console.log('📖 Menú expandido');
+            break;
+        }
+      });
+
+      // Ejemplo de cómo la aplicación contenedora puede comunicarse con el menú
+      window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          const menuElement = document.querySelector('menu-sidebar');
+          if (menuElement) {
+            // Ejemplo: activar un elemento del menú programáticamente
+            menuElement.setActiveItem('dashboard');
+            console.log('🎯 Item "dashboard" activado programáticamente');
+          }
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>

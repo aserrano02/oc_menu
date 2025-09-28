@@ -1,0 +1,51 @@
+/* Estilos base para la aplicación de menú lateral */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f8fafc;
+  overflow: hidden; /* Evitar scroll en la aplicación contenedora */
+}
+
+#app-content {
+  height: 100vh;
+  display: block;
+}
+
+/* Estilos para mejor integración como microfrontend */
+:root {
+  --menu-width: 280px;
+  --menu-collapsed-width: 70px;
+  --menu-primary-color: #1e3a8a;
+  --menu-secondary-color: #1e40af;
+  --menu-text-color: #ffffff;
+  --menu-hover-color: rgba(255, 255, 255, 0.1);
+  --menu-active-color: rgba(255, 255, 255, 0.15);
+  --menu-border-color: rgba(255, 255, 255, 0.1);
+  --menu-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Asegurar que el contenido se ajuste correctamente */
+* {
+  box-sizing: border-box;
+}
+
+/* Estilos para scroll personalizado en el menú */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
